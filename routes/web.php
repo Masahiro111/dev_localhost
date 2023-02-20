@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\MyPage;
+use App\Http\Livewire\TodoList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        Route::get('/my-page', MyPage::class);
+        Route::get('/todo-list', TodoList::class);
+    });
