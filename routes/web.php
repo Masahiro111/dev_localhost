@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Livewire\Blog;
 use App\Http\Livewire\MyPage;
+use App\Http\Livewire\Post;
+use App\Http\Livewire\Products;
 use App\Http\Livewire\TodoList;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +30,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
         Route::get('/my-page', MyPage::class);
         Route::get('/todo-list', TodoList::class);
+        Route::get('/post', Post::class);
+        Route::get('/products', Products::class);
     });
